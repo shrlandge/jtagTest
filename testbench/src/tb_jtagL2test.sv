@@ -26,7 +26,8 @@ module tb_jtagL2test;
 
     logic                 s_rst_n;
 
-
+    jtag_pkg::test_mode_if_t   test_mode_if = new;
+    
     jtagL2test(
 
     .clk_i          (t_clk),
@@ -51,7 +52,7 @@ module tb_jtagL2test;
     tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(t_clk) );
 
     initial begin
-        
+
         // jtag reset needed anyway
         s_rst_n = 1'b0;
         jtag_pkg::jtag_reset(s_tck, s_tms, s_trstn, s_tdi);
