@@ -13,7 +13,6 @@ module jtagL2test(
     input logic                           jtag_tms_i,
     input logic                           jtag_tdi_i,
     output logic                          jtag_tdo_o,
-    output logic [NB_CORES-1:0]           cluster_dbg_irq_valid_o
 
 );
     // tap to lint wrap
