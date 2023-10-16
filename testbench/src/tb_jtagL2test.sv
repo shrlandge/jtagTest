@@ -27,7 +27,8 @@ module tb_jtagL2test;
     logic                 s_rst_n;
 
     jtag_pkg::test_mode_if_t   test_mode_if = new;
-    
+    pulp_tap_pkg::pulp_tap_if_soc_t pulp_tap = new;
+
     jtagL2test(
 
     .clk_i          (t_clk),
