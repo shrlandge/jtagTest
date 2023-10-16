@@ -72,8 +72,7 @@ module jtagL2test(
         .rst_ni          ( rst_n         ),
         .init_ni         ( 1'b1               ),
         .test_mode_i     (     ),
-        .mem_slave       ( s_lint_pulp_jtag_bus),
-        .mem_pri_slave   (    )
+        .mem_slave       ( s_lint_pulp_jtag_bus)
     );
 
 
