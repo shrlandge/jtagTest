@@ -19,7 +19,7 @@ SRC = $(ROOT)/jtagL2test.sv \
       $(ROOT)/l2_ram_multi_bank.sv \
       $(ROOT)/lint_jtag_wrap.sv \
       $(ROOT)/src/* \
-      $(ROOT)/testbench/src* 
+      $(ROOT)/testbench/src/* 
 
 
 # $(ROOT)/src/jtag_axi_wrap.sv \
