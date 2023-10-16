@@ -18,7 +18,7 @@ SRC = $(ROOT)/jtagL2test.sv \
       $(ROOT)/jtag_tap_top.sv \
       $(ROOT)/l2_ram_multi_bank.sv \
       $(ROOT)/lint_jtag_wrap.sv \
-      $(ROOT)/src/riscv_pkg.sv \
+      $(ROOT)/riscv_pkg.sv \
       $(ROOT)/testbench/src/* \
       $(ROOT)/src/* 
       
