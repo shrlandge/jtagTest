@@ -12,7 +12,7 @@ module jtagL2test(
     input logic                           jtag_trst_ni,
     input logic                           jtag_tms_i,
     input logic                           jtag_tdi_i,
-    output logic                          jtag_tdo_o,
+    output logic                          jtag_tdo_o
 
 );
     // tap to lint wrap
