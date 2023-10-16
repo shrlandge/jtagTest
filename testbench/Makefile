@@ -13,16 +13,12 @@
 # Author: Robert Balas (balasr@iis.ee.ethz.ch)
 
 VCS = vcs
-ROOT = /home/piaodeng/code/jtag_pulp
-SRC = $(ROOT)/src/bscell.sv \
-      $(ROOT)/src/jtag_enable.sv \
-      $(ROOT)/src/jtag_enable_synch.sv \
-      $(ROOT)/src/jtagreg.sv \
-      $(ROOT)/src/jtag_rst_synch.sv \
-      $(ROOT)/src/jtag_sync.sv \
-      $(ROOT)/src/axi_bus.sv \
-      $(ROOT)/src/tap_top.v \
-      $(ROOT)/testbench/tb_jtag.sv
+ROOT = /home/piaodeng/code/jtagTest
+SRC = $(ROOT)/jtagL2test.sv \
+      $(ROOT)/jtag_tap_top.sv \
+      $(ROOT)/l2_ram_multi_bank.sv \
+      $(ROOT)/lint_jtag_wrap.sv \
+      $(ROOT)/src/* 
 
 
 # $(ROOT)/src/jtag_axi_wrap.sv \
