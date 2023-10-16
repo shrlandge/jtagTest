@@ -38,7 +38,7 @@ module l2_ram_multi_bank #(
    input logic             rst_ni,
    input logic             init_ni,
    input logic             test_mode_i,
-   XBAR_TCDM_BUS.Slave     mem_slave[NB_BANKS],
+   XBAR_TCDM_BUS.Slave     mem_slave[NB_BANKS]
 );
     localparam int unsigned BANK_SIZE_PRI0       = 8192; //Number of 32-bit words
     localparam int unsigned BANK_SIZE_PRI1       = 8192; //Number of 32-bit words
