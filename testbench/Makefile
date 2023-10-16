@@ -18,7 +18,6 @@ SRC = $(ROOT)/jtagL2test.sv \
       $(ROOT)/jtag_tap_top.sv \
       $(ROOT)/l2_ram_multi_bank.sv \
       $(ROOT)/lint_jtag_wrap.sv \
-      $(ROOT)/src/soc_mem_map.svh \
       $(ROOT)/src/* 
 
 
