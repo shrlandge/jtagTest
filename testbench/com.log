@@ -1,0 +1,67 @@
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'Rocky Linux release 8.7 (Green Obsidian)' is not supported on
+  'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug=1' will be deprecated in a future release.  Please use 
+  '-debug_acc+r+w+dmptf -debug_region+cell+encrypt' instead.
+
+
+Warning-[DBGACC_DBG] Multiple debug options being used
+  The debug switches '-debug_access' and '-debug*' are being used together.  
+  For better performance, consider using only '-debug_access'.
+
+Command: vcs -sverilog -debug_acc+all -debug=1 -timescale=1ns/1ps /home/piaodeng/code/jtagTest/jtagL2test.sv \
+/home/piaodeng/code/jtagTest/jtag_tap_top.sv /home/piaodeng/code/jtagTest/l2_ram_multi_bank.sv \
+/home/piaodeng/code/jtagTest/lint_jtag_wrap.sv /home/piaodeng/code/jtagTest/src/adbg_crc32.v \
+/home/piaodeng/code/jtagTest/src/adbg_lint_biu.sv /home/piaodeng/code/jtagTest/src/adbg_lint_module.sv \
+/home/piaodeng/code/jtagTest/src/adbg_lintonly_top.sv /home/piaodeng/code/jtagTest/src/bscell.sv \
+/home/piaodeng/code/jtagTest/src/jtag_axi_wrap.sv /home/piaodeng/code/jtagTest/src/jtag_enable.sv \
+/home/piaodeng/code/jtagTest/src/jtag_enable_synch.sv /home/piaodeng/code/jtagTest/src/jtagreg.sv \
+/home/piaodeng/code/jtagTest/src/jtag_rst_synch.sv /home/piaodeng/code/jtagTest/src/jtag_sync.sv \
+/home/piaodeng/code/jtagTest/src/tap_top.v /home/piaodeng/code/jtagTest/src/tc_sram.sv \
+-l com.log
+*** Using c compiler gcc instead of cc ...
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Mon Oct 16 12:05:05 2023
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file '/home/piaodeng/code/jtagTest/jtagL2test.sv'
+
+Error-[IND] Identifier not declared
+/home/piaodeng/code/jtagTest/jtagL2test.sv, 16
+  Identifier 'NB_CORES' has not been declared yet. If this error is not 
+  expected, please check if you have set `default_nettype to none.
+  
+
+Parsing design file '/home/piaodeng/code/jtagTest/jtag_tap_top.sv'
+Parsing design file '/home/piaodeng/code/jtagTest/l2_ram_multi_bank.sv'
+
+Error-[SFCOR] Source file cannot be opened
+  Source file "soc_mem_map.svh" cannot be opened for reading due to 'No such 
+  file or directory'.
+  Please fix above issue and compile again.
+  "/home/piaodeng/code/jtagTest/l2_ram_multi_bank.sv", 11
+  Source info: `include "soc_mem_map.svh"
+
+2 errors
+CPU time: .120 seconds to compile
