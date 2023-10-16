@@ -39,7 +39,6 @@ module l2_ram_multi_bank #(
    input logic             init_ni,
    input logic             test_mode_i,
    XBAR_TCDM_BUS.Slave     mem_slave[NB_BANKS],
-   XBAR_TCDM_BUS.Slave     mem_pri_slave[2]
 );
     localparam int unsigned BANK_SIZE_PRI0       = 8192; //Number of 32-bit words
     localparam int unsigned BANK_SIZE_PRI1       = 8192; //Number of 32-bit words
@@ -86,68 +85,6 @@ module l2_ram_multi_bank #(
        );
 
    end
-
-    // PRIVATE BANK0
-    //Perform TCDM handshaking for constant 1 cycle latency
-    assign mem_pri_slave[0].gnt = mem_pri_slave[0].req;
-    assign mem_pri_slave[0].r_opc = 1'b0;
-    always_ff @(posedge clk_i, negedge rst_ni) begin
-        if (!rst_ni) begin
-            mem_pri_slave[0].r_valid <= 1'b0;
-        end else begin
-            mem_pri_slave[0].r_valid <= mem_pri_slave[0].req;
-        end
-    end
-    //Remove Address offset
-    logic [31:0] pri0_address;
-    assign pri0_address = mem_pri_slave[0].add - `SOC_MEM_MAP_PRIVATE_BANK0_START_ADDR;
-
-    tc_sram #(
-      .NumWords  ( BANK_SIZE_PRI0 ),
-      .DataWidth ( 32             ),
-      .NumPorts  ( 1              ),
-      .Latency   ( 1              )
-    ) bank_sram_pri0_i (
-      .clk_i,
-      .rst_ni,
-      .req_i   (  mem_pri_slave[0].req                  ),
-      .we_i    ( ~mem_pri_slave[0].wen                  ),
-      .addr_i  (  pri0_address[PRI0_MEM_ADDR_WIDTH+1:2] ), //Convert from byte to word addressing
-      .wdata_i (  mem_pri_slave[0].wdata                ),
-      .be_i    (  mem_pri_slave[0].be                   ),
-      .rdata_o (  mem_pri_slave[0].r_rdata              )
-    );
-
-    // PRIVATE BANK1
-    //Perform TCDM handshaking for constant 1 cycle latency
-    assign mem_pri_slave[1].gnt = mem_pri_slave[1].req;
-    assign mem_pri_slave[1].r_opc = 1'b0;
-    always_ff @(posedge clk_i, negedge rst_ni) begin
-        if (!rst_ni) begin
-            mem_pri_slave[1].r_valid <= 1'b0;
-        end else begin
-            mem_pri_slave[1].r_valid <= mem_pri_slave[1].req;
-        end
-    end
-    //Remove Address offset
-    logic [31:0] pri1_address;
-    assign pri1_address = mem_pri_slave[1].add - `SOC_MEM_MAP_PRIVATE_BANK1_START_ADDR;
-
-    tc_sram #(
-      .NumWords  ( BANK_SIZE_PRI1 ),
-      .DataWidth ( 32             ),
-      .NumPorts  ( 1              ),
-      .Latency   ( 1              )
-    ) bank_sram_pri1_i (
-      .clk_i,
-      .rst_ni,
-      .req_i   (  mem_pri_slave[1].req                  ),
-      .we_i    ( ~mem_pri_slave[1].wen                  ),
-      .addr_i  (  pri1_address[PRI1_MEM_ADDR_WIDTH+1:2] ), //Convert from byte to word addressing
-      .wdata_i (  mem_pri_slave[1].wdata                ),
-      .be_i    (  mem_pri_slave[1].be                   ),
-      .rdata_o (  mem_pri_slave[1].r_rdata              )
-    );
 
 
 endmodule // l2_ram_multi_bank
