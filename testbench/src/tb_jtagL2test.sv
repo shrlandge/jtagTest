@@ -47,6 +47,7 @@ module tb_jtagL2test;
     assign  t_jtag_trst_ni  = s_trstn;
     assign  t_jtag_tms_i    = s_tms;
     assign  t_jtag_tdi_i    = s_tdi;
+    assign  s_tdo           = t_jtag_tdo_o;
 
     assign  t_rst_n         = s_rst_n;
 
