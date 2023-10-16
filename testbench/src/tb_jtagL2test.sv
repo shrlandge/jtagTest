@@ -8,10 +8,10 @@ module tb_jtagL2test;
     wire    t_clk;
     wire    t_rst_n;
 
-    logic   t_jtag_tck_i    = 1'b0;
-    logic   t_jtag_trst_ni  = 1'b0;
-    logic   t_jtag_tms_i    = 1'b0;
-    logic   t_jtag_tdi_i    = 1'b0;
+    logic   t_jtag_tck_i;
+    logic   t_jtag_trst_ni;
+    logic   t_jtag_tms_i;
+    logic   t_jtag_tdi_i;
 
     wire    t_jtag_tdo_o;
 
