@@ -65,8 +65,8 @@ module jtagL2test(
     );
 
     l2_ram_multi_bank #(
-        .NB_BANKS              ( 1  ),
-        .BANK_SIZE_INTL_SRAM   ( 64 )
+        .NB_BANKS              ( 4  ),
+        .BANK_SIZE_INTL_SRAM   ( 32768 )
     ) l2_ram_i (
         .clk_i           ( clk_i          ),
         .rst_ni          ( rst_n         ),
