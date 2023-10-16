@@ -26,7 +26,7 @@ SRC = $(ROOT)/jtagL2test.sv \
 .PHONY: build clean
 
 build:
-        $(VCS) -sverilog -debug_acc+all -debug=1 -timescale=1ns/1ps $(SRC) -l com.log
+    $(VCS) -sverilog -debug_acc+all -debug=1 -timescale=1ns/1ps $(SRC) -l com.log
 
 clean:
-        rm -rf work transcript compile.tcl
+    rm -rf work transcript compile.tcl
