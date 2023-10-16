@@ -23,7 +23,7 @@ module jtagL2test(
     logic                  s_jtag_axireg_tdi;
     logic                  s_jtag_axireg_tdo;
 
-    XBAR_TCDM_BUS s_lint_pulp_jtag_bus();
+    XBAR_TCDM_BUS  s_mem_l2_bus[0:0]();
 
     jtag_tap_top  #(
         .IDCODE_VALUE             ( `PULP_JTAG_IDCODE  )
@@ -61,7 +61,7 @@ module jtagL2test(
         .lint_select_i            ( s_jtag_axireg_sel    ),
         .clk_i                    ( clk_i            ),
         .rst_ni                   ( rst_n           ),
-        .jtag_lint_master         ( s_lint_pulp_jtag_bus )
+        .jtag_lint_master         ( s_mem_l2_bus[0] )
     );
 
     l2_ram_multi_bank #(
@@ -72,7 +72,7 @@ module jtagL2test(
         .rst_ni          ( rst_n         ),
         .init_ni         ( 1'b1               ),
         .test_mode_i     (     ),
-        .mem_slave       ( s_lint_pulp_jtag_bus)
+        .mem_slave       ( s_mem_l2_bus)
     );
 
 
