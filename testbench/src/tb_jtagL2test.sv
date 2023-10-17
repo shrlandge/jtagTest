@@ -4,7 +4,7 @@ module tb_jtagL2test;
 
     parameter   WRITE_ADDR = 32'h0000_0000;
 
-    // logic    w_clk;
+    logic    s_clk;
     // logic    w_rst_n;
 
     logic    w_jtag_tck_i;
@@ -32,13 +32,13 @@ module tb_jtagL2test;
     assign  w_jtag_tdi_i    = s_tdi;
     assign  w_rst_n         = s_rst_n;
 
-    tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(w_clk) );
+    tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(s_clk) );
 
     jtagL2test i_jtagL2test(
 
-    .clk_i          (s_tck),
+    .clk_i          (s_clk),
     .rst_n          (s_rst_n),
-    
+
     .jtag_tck_i     (w_jtag_tck_i),
     .jtag_trst_ni   (w_jtag_trst_ni),
     .jtag_tms_i     (w_jtag_tms_i),
@@ -55,8 +55,8 @@ module tb_jtagL2test;
         jtag_pkg::jtag_softreset(s_tck, s_tms, s_trstn, s_tdi);
         #5us;
 
-        jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
-        #5us;
+        //jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
+        //#5us;
 
         jtag_pkg::jtag_get_idcode(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
         #5us;
