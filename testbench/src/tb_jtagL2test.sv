@@ -8,12 +8,11 @@ module tb_jtagL2test;
     wire    t_clk;
     wire    t_rst_n;
 
-    logic   t_jtag_tck_i;
-    logic   t_jtag_trst_ni;
-    logic   t_jtag_tms_i;
-    logic   t_jtag_tdi_i;
-
-    wire    t_jtag_tdo_o;
+    wire    w_jtag_tck_i
+    wire    w_jtag_trst_ni;
+    wire    w_jtag_tms_i;
+    wire    w_jtag_tdi_i;
+    wire    w_jtag_tdo_o;
 
     logic [255:0][31:0]   jtag_data;
     logic [8:0] jtag_conf_reg, jtag_conf_rego; //22bits but actually only the last 9bits are used
@@ -36,24 +35,24 @@ module tb_jtagL2test;
     .rst_n          (t_rst_n),
 
 
-    .jtag_tck_i     (t_jtag_tck_i),
-    .jtag_trst_ni   (t_jtag_trst_ni),
-    .jtag_tms_i     (t_jtag_tms_i),
-    .jtag_tdi_i     (t_jtag_tdi_i),
-    .jtag_tdo_o     (t_jtag_tdo_o)
+    .jtag_tck_i     (w_jtag_tck_i),
+    .jtag_trst_ni   (w_jtag_trst_ni),
+    .jtag_tms_i     (w_jtag_tms_i),
+    .jtag_tdi_i     (w_jtag_tdi_i),
+    .jtag_tdo_o     (w_jtag_tdo_o)
 
     );
 
     always_comb begin 
-       tmp_tdo = t_jtag_tdo_o;
+       tmp_tdo = w_jtag_tdo_o;
     end
 
     assign  s_tdo = tmp_tdo;
 
-    assign  t_jtag_tck_i    = s_tck;
-    assign  t_jtag_trst_ni  = s_trstn;
-    assign  t_jtag_tms_i    = s_tms;
-    assign  t_jtag_tdi_i    = s_tdi;
+    assign  w_jtag_tck_i    = s_tck;
+    assign  w_jtag_trst_ni  = s_trstn;
+    assign  w_jtag_tms_i    = s_tms;
+    assign  w_jtag_tdi_i    = s_tdi;
 
     assign  t_rst_n         = s_rst_n;
 
