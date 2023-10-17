@@ -65,7 +65,7 @@ module tb_jtagL2test;
         jtag_pkg::jtag_softreset(s_tck, s_tms, s_trstn, s_tdi);
         #5us;
 
-        jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, w_jtag_tdo_o);
+        jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
         #5us;
 
         jtag_pkg::jtag_get_idcode(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
