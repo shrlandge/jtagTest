@@ -11,7 +11,7 @@ module tb_jtagL2test;
     wire    w_jtag_trst_ni;
     wire    w_jtag_tms_i;
     wire    w_jtag_tdi_i;
-    reg    w_jtag_tdo_o;
+    wire    w_jtag_tdo_o;
 
     logic [255:0][31:0]   jtag_data;
     logic [8:0] jtag_conf_reg, jtag_conf_rego; //22bits but actually only the last 9bits are used
