@@ -8,7 +8,7 @@ module tb_jtagL2test;
     wire    t_clk;
     wire    t_rst_n;
 
-    wire    w_jtag_tck_i
+    wire    w_jtag_tck_i;
     wire    w_jtag_trst_ni;
     wire    w_jtag_tms_i;
     wire    w_jtag_tdi_i;
