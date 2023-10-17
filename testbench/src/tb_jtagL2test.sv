@@ -5,7 +5,7 @@ module tb_jtagL2test;
     parameter   WRITE_ADDR = 32'h0000_0000;
 
     logic    s_clk;
-    // logic    w_rst_n;
+    logic    w_rst_n;
 
     logic    w_jtag_tck_i;
     logic    w_jtag_trst_ni;
@@ -43,9 +43,14 @@ module tb_jtagL2test;
     .jtag_trst_ni   (w_jtag_trst_ni),
     .jtag_tms_i     (w_jtag_tms_i),
     .jtag_tdi_i     (w_jtag_tdi_i),
-    .jtag_tdo_o     (s_tdo)
+    .jtag_tdo_o     (w_jtag_tdo_o)
 
     );
+
+    always_comb begin 
+        tmp_tdo = w_jtag_tdo_o;
+    end
+    
 
     initial begin
 
@@ -55,8 +60,8 @@ module tb_jtagL2test;
         jtag_pkg::jtag_softreset(s_tck, s_tms, s_trstn, s_tdi);
         #5us;
 
-        //jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
-        //#5us;
+        jtag_pkg::jtag_bypass_test(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
+        #5us;
 
         jtag_pkg::jtag_get_idcode(s_tck, s_tms, s_trstn, s_tdi, s_tdo);
         #5us;
