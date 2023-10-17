@@ -4,8 +4,8 @@ module tb_jtagL2test;
 
     parameter   WRITE_ADDR = 32'h0000_0000;
 
-    logic    w_clk;
-    logic    w_rst_n;
+    // logic    w_clk;
+    // logic    w_rst_n;
 
     logic    w_jtag_tck_i;
     logic    w_jtag_trst_ni;
@@ -21,36 +21,31 @@ module tb_jtagL2test;
     logic                 s_tdi   = 1'b0;
     logic                 s_tms   = 1'b0;
     logic                 s_tdo;
-    logic                 tmp_tdo;
-
     logic                 s_rst_n;
 
     jtag_pkg::test_mode_if_t   test_mode_if = new;
-    pulp_tap_pkg::pulp_tap_if_soc_t pulp_tap = new;
-
-    // jtagL2test i_jtagL2test(
-
-    // .clk_i          (w_clk),
-    // .rst_n          (w_rst_n),
-
-
-    // .jtag_tck_i     (w_jtag_tck_i),
-    // .jtag_trst_ni   (w_jtag_trst_ni),
-    // .jtag_tms_i     (w_jtag_tms_i),
-    // .jtag_tdi_i     (w_jtag_tdi_i),
-    // .jtag_tdo_o     (s_tdo)
-
-    // );
-   
+    pulp_tap_pkg::pulp_tap_if_soc_t pulp_tap = new; 
 
     assign  w_jtag_tck_i    = s_tck;
     assign  w_jtag_trst_ni  = s_trstn;
     assign  w_jtag_tms_i    = s_tms;
     assign  w_jtag_tdi_i    = s_tdi;
-
     assign  w_rst_n         = s_rst_n;
 
     tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(w_clk) );
+
+    jtagL2test i_jtagL2test(
+
+    .clk_i          (s_tck),
+    .rst_n          (s_rst_n),
+    
+    .jtag_tck_i     (w_jtag_tck_i),
+    .jtag_trst_ni   (w_jtag_trst_ni),
+    .jtag_tms_i     (w_jtag_tms_i),
+    .jtag_tdi_i     (w_jtag_tdi_i),
+    .jtag_tdo_o     (s_tdo)
+
+    );
 
     initial begin
 
