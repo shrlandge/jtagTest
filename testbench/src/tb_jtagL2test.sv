@@ -23,6 +23,7 @@ module tb_jtagL2test;
     logic                 s_tdi   = 1'b0;
     logic                 s_tms   = 1'b0;
     logic                 s_tdo;
+    logic                 tmp_tdo;
 
     logic                 s_rst_n;
 
@@ -44,8 +45,10 @@ module tb_jtagL2test;
     );
 
     always_comb begin : 
-        s_tdo = t_jtag_tdo_o;
+        tmp_tdo = t_jtag_tdo_o;
     end
+
+    assign  s_tdo = tmp_tdo;
 
     assign  t_jtag_tck_i    = s_tck;
     assign  t_jtag_trst_ni  = s_trstn;
