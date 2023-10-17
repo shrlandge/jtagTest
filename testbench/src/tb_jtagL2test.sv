@@ -21,7 +21,7 @@ module tb_jtagL2test;
     logic                 s_tck   = 1'b0;
     logic                 s_tdi   = 1'b0;
     logic                 s_tms   = 1'b0;
-    logic                 s_tdo;
+    wire                 s_tdo;
     logic                 tmp_tdo;
 
     logic                 s_rst_n;
@@ -29,7 +29,7 @@ module tb_jtagL2test;
     jtag_pkg::test_mode_if_t   test_mode_if = new;
     pulp_tap_pkg::pulp_tap_if_soc_t pulp_tap = new;
 
-    jtagL2test(
+    jtagL2test i_jtagL2test(
 
     .clk_i          (w_clk),
     .rst_n          (w_rst_n),
