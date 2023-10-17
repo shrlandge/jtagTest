@@ -28,19 +28,19 @@ module tb_jtagL2test;
     jtag_pkg::test_mode_if_t   test_mode_if = new;
     pulp_tap_pkg::pulp_tap_if_soc_t pulp_tap = new;
 
-    jtagL2test i_jtagL2test(
+    // jtagL2test i_jtagL2test(
 
-    .clk_i          (w_clk),
-    .rst_n          (w_rst_n),
+    // .clk_i          (w_clk),
+    // .rst_n          (w_rst_n),
 
 
-    .jtag_tck_i     (w_jtag_tck_i),
-    .jtag_trst_ni   (w_jtag_trst_ni),
-    .jtag_tms_i     (w_jtag_tms_i),
-    .jtag_tdi_i     (w_jtag_tdi_i),
-    .jtag_tdo_o     (s_tdo)
+    // .jtag_tck_i     (w_jtag_tck_i),
+    // .jtag_trst_ni   (w_jtag_trst_ni),
+    // .jtag_tms_i     (w_jtag_tms_i),
+    // .jtag_tdi_i     (w_jtag_tdi_i),
+    // .jtag_tdo_o     (s_tdo)
 
-    );
+    // );
    
 
     assign  w_jtag_tck_i    = s_tck;
