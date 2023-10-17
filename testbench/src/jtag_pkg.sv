@@ -374,7 +374,7 @@ package jtag_pkg;
       ref logic s_tms,
       ref logic s_trstn,
       ref logic s_tdi,
-      input logic s_tdo
+      logic s_tdo
    );
       automatic JTAG_reg #(.size(255), .instr({JTAG_SOC_BYPASS, JTAG_SOC_BYPASS})) jtag_bypass = new;
                 logic [255:0] result_data;
