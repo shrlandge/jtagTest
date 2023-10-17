@@ -5,14 +5,14 @@ module tb_jtagL2test;
 
     parameter   WRITE_ADDR = 32'h0000_0000;
 
-    wire    t_clk;
-    wire    t_rst_n;
+    wire    w_clk;
+    wire    w_rst_n;
 
     wire    w_jtag_tck_i;
     wire    w_jtag_trst_ni;
     wire    w_jtag_tms_i;
     wire    w_jtag_tdi_i;
-    wire    w_jtag_tdo_o;
+    reg    w_jtag_tdo_o;
 
     logic [255:0][31:0]   jtag_data;
     logic [8:0] jtag_conf_reg, jtag_conf_rego; //22bits but actually only the last 9bits are used
@@ -31,8 +31,8 @@ module tb_jtagL2test;
 
     jtagL2test(
 
-    .clk_i          (t_clk),
-    .rst_n          (t_rst_n),
+    .clk_i          (w_clk),
+    .rst_n          (w_rst_n),
 
 
     .jtag_tck_i     (w_jtag_tck_i),
@@ -54,9 +54,9 @@ module tb_jtagL2test;
     assign  w_jtag_tms_i    = s_tms;
     assign  w_jtag_tdi_i    = s_tdi;
 
-    assign  t_rst_n         = s_rst_n;
+    assign  w_rst_n         = s_rst_n;
 
-    tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(t_clk) );
+    tb_clk_gen #( .CLK_PERIOD(REF_CLK_PERIOD) ) i_ref_clk_gen (.clk_o(w_clk) );
 
     initial begin
 
