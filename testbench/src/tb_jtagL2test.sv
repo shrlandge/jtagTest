@@ -22,7 +22,7 @@ module tb_jtagL2test;
     logic                 s_tck   = 1'b0;
     logic                 s_tdi   = 1'b0;
     logic                 s_tms   = 1'b0;
-    logic                 s_tdo;
+    wire                  s_tdo;
 
     logic                 s_rst_n;
 
