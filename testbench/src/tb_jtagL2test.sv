@@ -45,7 +45,11 @@ module tb_jtagL2test;
     );
 
     always_comb begin : 
-        tmp_tdo = t_jtag_tdo_o;
+        if(t_jtag_tdo_o) begin
+            tmp_tdo = 1'b1;
+        end else begin
+            tmp_tdo = 1'b0;
+        end
     end
 
     assign  s_tdo = tmp_tdo;
