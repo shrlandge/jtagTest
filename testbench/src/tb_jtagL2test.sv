@@ -4,14 +4,14 @@ module tb_jtagL2test;
 
     parameter   WRITE_ADDR = 32'h0000_0000;
 
-    wire    w_clk;
-    wire    w_rst_n;
+    logic    w_clk;
+    logic    w_rst_n;
 
-    wire    w_jtag_tck_i;
-    wire    w_jtag_trst_ni;
-    wire    w_jtag_tms_i;
-    wire    w_jtag_tdi_i;
-    wire    w_jtag_tdo_o;
+    logic    w_jtag_tck_i;
+    logic    w_jtag_trst_ni;
+    logic    w_jtag_tms_i;
+    logic    w_jtag_tdi_i;
+    logic    w_jtag_tdo_o;
 
     logic [255:0][31:0]   jtag_data;
     logic [8:0] jtag_conf_reg, jtag_conf_rego; //22bits but actually only the last 9bits are used
@@ -42,11 +42,11 @@ module tb_jtagL2test;
 
     );
 
-    always_comb begin 
-       tmp_tdo = w_jtag_tdo_o;
-    end
+    //always_comb begin 
+    //   tmp_tdo = w_jtag_tdo_o;
+    //end
 
-    assign  s_tdo = tmp_tdo;
+    assign  s_tdo = w_jtag_tdo_o;
 
     assign  w_jtag_tck_i    = s_tck;
     assign  w_jtag_trst_ni  = s_trstn;
