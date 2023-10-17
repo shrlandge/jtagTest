@@ -38,15 +38,10 @@ module tb_jtagL2test;
     .jtag_trst_ni   (w_jtag_trst_ni),
     .jtag_tms_i     (w_jtag_tms_i),
     .jtag_tdi_i     (w_jtag_tdi_i),
-    .jtag_tdo_o     (w_jtag_tdo_o)
+    .jtag_tdo_o     (s_tdo)
 
     );
-
-    //always_comb begin 
-    //   tmp_tdo = w_jtag_tdo_o;
-    //end
-
-    assign  s_tdo = w_jtag_tdo_o;
+   
 
     assign  w_jtag_tck_i    = s_tck;
     assign  w_jtag_trst_ni  = s_trstn;
