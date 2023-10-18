@@ -49,7 +49,7 @@ module tb_jtagL2test;
     );
 
     always_comb begin 
-        s_tdo <= w_jtag_tdo_o;
+        s_tdo = w_jtag_tdo_o;
     end
     
 
